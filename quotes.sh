@@ -20,6 +20,6 @@ echo "This will check the uname: `uname`"
 echo "This will print date: `date`"
 
 #in this reverse quotes we execute a command called hostname.
-#(we execute commands inside reverse reverse quotes).
+#(we execute commands inside reverse quotes).
 
 #END #
