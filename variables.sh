@@ -22,3 +22,7 @@ echo "Variable 1value: $value"
 echo "hyphen Variable value: $Hyphen_a"
 
 # END #
+
+# what is variable?
+# variables are used to store values. Whenever we call the variable then
+# it'll be display the value assign to that variable. 
