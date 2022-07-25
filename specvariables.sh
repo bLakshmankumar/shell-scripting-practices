@@ -5,7 +5,7 @@
 #MOdified Date:
 #Author: Lakshman
 #START #
-# The $* > will store the complete setup positional parameters as a single string. 
+# The $* > It will store the complete setup positional parameters as a single string. 
 #$#      > it is set to the number of arguments specified.
 #        (that means how many argu/positional parameters we provide that arg number will be counted
 #         with $#)
