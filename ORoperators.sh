@@ -16,7 +16,7 @@ else
 echo "False, Statement Try Again."
 fi
 
-# If we provide any value in between so any one of the value will be True. foe example.
+# If we provide any value in between so any one of the value will be True. for example.
 # if we provide the value (less than 20 range) then the value will be True. (or)
 # if we provide the (second value more than 30) and the value will be True. (or)  
 # if we provide the value with in (20 in between 30) then the value will be Flase.
