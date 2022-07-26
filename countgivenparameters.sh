@@ -7,7 +7,7 @@
 # START #
 # Script 1
 #--------
-# echo "Your current given parameters are $#"
+  echo "Your current given parameters are $#"
 # Note-: with help of this script we can count the num of files/directories are in a directrory
 
 # ex-: i wanna check a files/directories count in a /etc directrory so what i do now is?
@@ -24,11 +24,11 @@
 # script_2
 # Along with some condition variables we can use it over here
 
-if [ $# -lt 1 ] ;then
-echo "program Usage is'./scriptname.sh' Options"
-else
-echo "Program executed Succesfully"
-fi
+#if [ $# -lt 1 ] ;then
+#echo "program Usage is'./scriptname.sh' Options"
+#else
+#echo "Program executed Succesfully"
+#fi
 
 #Note-: If the positional perameter is not given 
 # Then it should printout the validation saying that whatever the program you're executing
