@@ -19,17 +19,17 @@
 # HOW AND operators Works-:
 #..........................
  
-# if AND operators if first statement is true then second statement is true then result will true
-# if the first statement is True and second statement is false that result will be false.
-# T - T -F
+# if first statement is True then second statement is True then result will True
+# if the first statement is True and second statement is False that result will be False.
+# T - T - T
 # T - F - F
 # F - T - F
 # F - F - F
 
 # How OR operators works-:
 #.........................
-# if first condition is true second condition is false result will be true.
-# F - T - T
+# if first condition is True second condition is False result will be True.
+# T - F - T
 # F - T - T
 # F - F - F
 # T - T - T
