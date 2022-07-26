@@ -1,7 +1,7 @@
 #!bin/bash
 # purpose: Logical Operators(OR Operaters)
-# Version: 1.5
-# created date: Tuesday July 26 12:55:35 IST 2022
+# Version: 1.6
+# created date: Tuesday July 26 13:38:22 IST 2022
 # MOdified Date:
 # Author: Lakshman
 # START #  

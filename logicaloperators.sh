@@ -6,7 +6,7 @@
 # Author: Lakshman
 # START #  
 
-# A logical condition is created, when two or more conditioned produce a single result based on 
+# A logical condition is created, when two or more conditions produce a single result based on 
 # them.
 #Logical OR & AND operations are very useful where multiple conditions are used in our Scripts.
 
