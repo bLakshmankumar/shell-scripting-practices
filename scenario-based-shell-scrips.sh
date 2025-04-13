@@ -16,3 +16,15 @@ if [-f /myfile/file] ; then
 else 
   echo "file not found"
 fi
+
+#4)  How do you pass arguments to a shell script?
+Answer: Use $1, $2, ..., $n for positional arguments. $@ for all.
+# Script:
+# #!/bin/bash
+echo "First arg: $1"
+echo "Second arg: $2"
+# Run the script :
+./script.sh hello world
+# Output :
+First arg: hello
+Second arg: world
