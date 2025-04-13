@@ -159,28 +159,53 @@ for ns in $(kubectl get ns --no-headers | awk '{print $1}'); do
   echo "$ns => $count pods"
 done
 
-#11)  Print IP Address of the Machine :
+#13) Print IP Address of the Machine :
 hostname -I | awk '{print $1}'
 
-#12) Update All Packages & Notify via Email
+#14) Update All Packages & Notify via Email
 # Scheduled via cron, ensures system stays patched.
 #!/bin/bash
 apt update && apt upgrade -y
 echo "Packages updated on $(hostname)" | mail -s "Update Report" user@example.com
 
-#13) Cron Job to Monitor Failed SSH Logins :
+#15) Cron Job to Monitor Failed SSH Logins :
 # Helps detect brute force attacks.
 #!/bin/bash
 grep "Failed password" /var/log/auth.log | tail -n 5
 
-#14) Upload Backup to S3 :
+#16) Upload Backup to S3 :
 # Automates data safety to cloud.
 #!/bin/bash
 file="/tmp/db-backup.sql"
 bucket="s3://my-backup-bucket"
 aws s3 cp $file $bucket
 
-#15) Compress and Archive Old Log Files :
+#17) Upload Backup to S3 (Different Region + Different AWS Account) :
+#!/bin/bash
+
+# === CONFIGURATION ===
+file="/tmp/db-backup.sql"                    # Path to your backup file
+bucket_name="target-account-backup-bucket"   # Destination S3 bucket (in another AWS account)
+region="us-west-2"                           # Destination region
+aws_profile="target-account-profile"         # Named AWS CLI profile (configured for the target account)
+
+# === Upload to S3 ===
+echo "Starting upload of $file to s3://$bucket_name/ in region $region..."
+
+# Upload using specified profile and region
+aws s3 cp "$file" "s3://$bucket_name/" \
+    --region "$region" \
+    --profile "$aws_profile"
+
+# === Check Result ===
+if [ $? -eq 0 ]; then
+    echo "✅ File uploaded successfully to s3://$bucket_name/$(basename $file)"
+else
+    echo "❌ Upload failed. Please check your AWS credentials, region, or bucket permissions."
+    exit 1
+fi
+
+#18) Compress and Archive Old Log Files :
 # Compresses logs older than 7 days to save space.
 #!/bin/bash
 find /var/log/myapp -type f -name "*.log" -mtime +7 -exec gzip {} \;
