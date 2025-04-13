@@ -1,4 +1,10 @@
 #!/bin/bash
+# The script is a system resource monitoring script.
+# It checks:
+#   CPU usage
+#   Available memory
+#   Disk usage
+#It then compares these values against preset thresholds and prints a warning or OK message based on the results.
 echo `date`
 ##cpu use threshold
 cpu_threshold='80'
