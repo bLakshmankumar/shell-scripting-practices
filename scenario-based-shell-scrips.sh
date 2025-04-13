@@ -106,5 +106,87 @@ cpu_usage
 mem_usage
 disk_usage
 
+#6) Check if a service is running, restart if not :
+# #!/bin/bash
+service="nginx"
+if ! pgrep -x "$service" > /dev/null
+then
+  echo "$service not running, restarting..."
+  systemctl restart $service
+else
+  echo "$service is running."
+fi
+
+#7) Restart a Service if It's Not Running
+# #!/bin/bash
+# logic : Uses pgrep to check if service is running. Restarts if not
+SERVICE=nginx
+if ! pgrep $SERVICE > /dev/null; then
+  echo "$SERVICE is down, restarting..."
+  systemctl restart $SERVICE
+fi
+
+#8) Backup Files Daily to a Timestamped Directory :
+#  Logic: Copies files with timestamped backup folder
+#!/bin/bash
+src_dir="/var/www/html"
+backup_dir="/backups/html_$(date +%F_%H-%M-%S)"
+mkdir -p $backup_dir
+cp -r $src_dir/* $backup_dir/
+echo "Backup completed to $backup_dir"
+
+#9) Verify Application Health via HTTP :
+# Logic : Performs health check and alerts if non-200 response.
+#!/bin/bash
+url="http://localhost:8080/health"
+status=$(curl -s -o /dev/null -w "%{http_code}" $url)
+if [ $status -ne 200 ]; then
+  echo "App is unhealthy! Status: $status"
+else
+  echo "App is healthy."
+fi
+
+#10) Extract Error Lines from Log File :
+# Logic : Greps latest 10 errors from logs.
+#!/bin/bash
+grep -i "error" /var/log/app.log | tail -n 10
+
+#11) Loop Through Kubernetes Namespaces and Get Pod Counts :
+#  Helps in cluster pod distribution visibility.
+#!/bin/bash
+for ns in $(kubectl get ns --no-headers | awk '{print $1}'); do
+  count=$(kubectl get pods -n $ns --no-headers | wc -l)
+  echo "$ns => $count pods"
+done
+
+#11)  Print IP Address of the Machine :
+hostname -I | awk '{print $1}'
+
+#12) Update All Packages & Notify via Email
+# Scheduled via cron, ensures system stays patched.
+#!/bin/bash
+apt update && apt upgrade -y
+echo "Packages updated on $(hostname)" | mail -s "Update Report" user@example.com
+
+#13) Cron Job to Monitor Failed SSH Logins :
+# Helps detect brute force attacks.
+#!/bin/bash
+grep "Failed password" /var/log/auth.log | tail -n 5
+
+#14) Upload Backup to S3 :
+# Automates data safety to cloud.
+#!/bin/bash
+file="/tmp/db-backup.sql"
+bucket="s3://my-backup-bucket"
+aws s3 cp $file $bucket
+
+#15) Compress and Archive Old Log Files :
+# Compresses logs older than 7 days to save space.
+#!/bin/bash
+find /var/log/myapp -type f -name "*.log" -mtime +7 -exec gzip {} \;
+
+
+
+
 
 
