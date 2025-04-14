@@ -25,7 +25,7 @@ find . -type f -exec du -h {} + | sort -hr | head -1
 # head -1: show largest
 
 #3) How do you check if a file exists?
-if [-f /myfile/file] ; then
+if ls /myfile/file ; then
   echo "file exists"
 else 
   echo "file not found"
