@@ -1,7 +1,12 @@
 #1) Write a script to delete files older than 7 days :
-find /path/log/ -type f -mtime +7 -exec rm -f {} \;
+#!/bin/bash
+target_dir="/tmp/old-files-demo"
+echo "🧹 Deleting files older than 6 days in $target_dir..."
+find "$target_dir" -type f -mtime +6 -exec rm -v {} \;
+echo "✅ Cleanup completed."
+
 # Explanation :
-# -mtime +7: modified more than 7 days ago
+# -mtime +6: modified more than 6 days ago
 # -exec rm -f {}: deletes each matched file
 
 #2) Write a script to find the largest file in a directory :
