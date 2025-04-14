@@ -9,6 +9,15 @@ echo "✅ Cleanup completed."
 # -mtime +6: modified more than 6 days ago
 # -exec rm -f {}: deletes each matched file
 
+OR
+# To delete only files with a specific extension (like .log, .txt, etc.), just add the -name flag to the find command.
+#!/bin/bash
+target_dir="/tmp/old-files-demo"
+extension="*.log"   # Change this to the extension you want to target
+echo "🧹 Deleting $extension files older than 6 days in $target_dir..."
+find "$target_dir" -type f -name "$extension" -mtime +6 -exec rm -v {} \;
+echo "✅ Cleanup completed."
+
 #2) Write a script to find the largest file in a directory :
 find . -type f -exec du -h {} + | sort -hr | head -1
 # du -h: human-readable sizes
